@@ -83,7 +83,8 @@ plz,splits = np.unique(arr_2_sort[sort],return_index=True)
 
 
 def mkarray(lines):
-    array = np.array([float(lines[i][z:z+4])/10 for i in range(nrows) for z in range(0,ncols*4,4)])
+    array = np.array([float(lines[i][z:z+4]) for i in range(nrows) for z in range(0,ncols*4,4)])
+    array = array/10
     nan   = np.where(array == nodata)
     array[nan] = np.nan
     return array
