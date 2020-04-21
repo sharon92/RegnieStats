@@ -104,7 +104,7 @@ for year in tqdm(os.listdir(rasterBundles)):
         
         day_ = pd.to_datetime(day.replace('ra',''),yearfirst=True)
         
-        daily_dict[day_] = [np.nanmean(sa) for sa in np.array_split(array[sort],splits)[2:]]
+        daily_dict[day_] = [np.round(np.nanmean(sa),3) for sa in np.array_split(array[sort],splits)[2:]]
         
     df = pd.DataFrame(daily_dict,index = plz[1:])
     df.to_csv(year+'.csv')
